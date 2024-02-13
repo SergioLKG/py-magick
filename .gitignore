@@ -1,3 +1,6 @@
 .git
 .idea
-.git
+setup.py
+pymagick.egg-info
+dist
+hype
