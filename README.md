@@ -6,6 +6,7 @@
 
 - **File Reading and Writing:** The module provides functions to read and write data in files of various formats, including CSV, JSON, XML, etc.
 - **Data Manipulation:** It allows performing data manipulation operations on files programmatically, such as adding, removing, or modifying data.
+- **File Formating**: Brings an easy way to format a file at the moment you write it, even after.
 - **Intuitive Interface:** Offers an intuitive and easy-to-use interface for Python developers, enabling efficient file operations.
 - **Support for Various File Formats:** In addition to CSV, the module supports file manipulation in a variety of formats, making it highly versatile and useful for a range of applications.
 
