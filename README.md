@@ -19,7 +19,7 @@ You can install the module using pip:
 
 ## Example Usage 💻
 *Full info example tester file here*
-[TESTER.py](https://gist.githubusercontent.com/SergioLKG/e1bd7c26a29653cb5bec0824151be8f2/raw/a5e4a909e195fbd67b77f72cc51058a1c73a1884/tester.py)
+[TESTER.py](https://gist.github.com/SergioLKG/e1bd7c26a29653cb5bec0824151be8f2)
 
 ```python
 import os
