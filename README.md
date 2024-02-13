@@ -1,20 +1,14 @@
 # PY-MAGICK 🪄✨
 
-**pymagick** is a Python module designed to facilitate file manipulation and usage in various formats. The module
-provides functionalities for reading, writing, and manipulating files of different types, including CSV, JSON, XML, and
-more. This project aims to offer an intuitive and efficient interface for working with data stored in files, providing
-powerful tools for common data manipulation operations.
+**pymagick** is a Python module designed to facilitate file manipulation and usage in various formats. The module provides functionalities for reading, writing, and manipulating files of different types, including CSV, JSON, XML, and more. This project aims to offer an intuitive and efficient interface for working with data stored in files, providing powerful tools for common data manipulation operations.
 
 ## Key Features ⚔️
 
-- **File Reading and Writing:** The module provides functions to read and write data in files of various formats,
-  including CSV, JSON, XML, etc.
-- **Data Manipulation:** It allows performing data manipulation operations on files programmatically, such as adding,
-  removing, or modifying data.
-- **Intuitive Interface:** Offers an intuitive and easy-to-use interface for Python developers, enabling efficient file
-  operations.
-- **Support for Various File Formats:** In addition to CSV, the module supports file manipulation in a variety of
-  formats, making it highly versatile and useful for a range of applications.
+- **File Reading and Writing:** The module provides functions to read and write data in files of various formats, including CSV, JSON, XML, etc.
+- **Data Manipulation:** It allows performing data manipulation operations on files programmatically, such as adding, removing, or modifying data.
+- **File Formating**: Brings an easy way to format a file at the moment you write it, even after.
+- **Intuitive Interface:** Offers an intuitive and easy-to-use interface for Python developers, enabling efficient file operations.
+- **Support for Various File Formats:** In addition to CSV, the module supports file manipulation in a variety of formats, making it highly versatile and useful for a range of applications.
 
 ## Installation 🛠️
 
@@ -25,63 +19,71 @@ You can install the module using pip:
 ````
 
 ## Example Usage 💻
+*Full info example tester file here*
+[TESTER.py](https://gist.github.com/SergioLKG/e1bd7c26a29653cb5bec0824151be8f2)
 
 ```python
-    import pymagick
+import os
+import pymagick
 
-# Read data from a CSV file / export the data while read 
-data = pymagick.csv.read('data.csv') / ('data.csv', 'output.txt')
+def test_handling(file_format, data):
+    output_folder = 'test-rubish'
+    if not os.path.exists(output_folder):
+        os.makedirs(output_folder)
 
-# Convert the date (if possible)
-pymagick.convert(data, '.sql')
+    output_file = os.path.join(output_folder, f"test{file_format}")
 
-# Write data to a CSV file / 
-pymagick.csv.write('output.csv', data)
+    print(f"Testing {file_format.upper()} file handling...")
 
-# Append in file
-pymagick.csv.append('output.csv', data, modifiers...)
+    file_data = pymagick.convert(data, file_format)
+    print(f"{file_format.upper()} data:")
+    print(file_data)
 
-object = {
-    "data": [
-        {
-            "something": "Wizard",
-            "anotherthing": "Elder",
-            "idontknow": "The Best",
-            "enjoy": {
-                "whynot": "elemental",
-                "ofcourse": "Panther"
-            },
-            "anything": "hello"
-        }
-    ]
-}
+    pymagick.write(file_data, output_file)
+    print(f"{file_format.upper()} file '{output_file}' created.")
 
-# Oh! I forget to add something, NO PROBLEM!!
-object.appendto("enjoy", '"iforget": "Magick!"')
+    print(f"Formatting {file_format.upper()} file...")
+    pymagick.opformat(output_file)
+    print(f"{file_format.upper()} file formatted.\n")
 
+if __name__ == "__main__":
+    data = {
+        "employees": [
+            {"name": "John", "age": 30, "city": "New York"},
+            {"name": "Alice", "age": 25, "city": "Los Angeles"},
+            {"name": "Bob", "age": 35, "city": "Chicago"}
+        ]
+    }
+
+    test_handling('.csv', [['Name', 'Age', 'City'], ['John', 30, 'New York'], ['Alice', 25, 'Los Angeles'], ['Bob', 35, 'Chicago']])
+    test_handling('.json', data)
+    test_handling('.xml', data)
 ...
 ```
 
 ## Quick Solve Methods 🏃‍♂️💨
 
-- **CSV Quick Solve:**
+- **Quick Solve:**
     ```python
     import pymagick
     """
-    Quickest way to perform files without any format, just quick solves!
+    Quickest way to perform file operations using pymagick module!
     """
-    data = pymagick.csv.read('data.csv')
-    pymagick.csv.write('output.csv', data)
-    ```
 
-- **JSON Quick Solve:**
-    ```python
-    import pymagick
-    """
-    Quickest way to perform files without any format, just quick solves!
-    """
-    data = rjson('data.json')
-    wjson('output.csv', data)
+    # Example: Read CSV file
+    data = pymagick.read('data.csv')
+
+    # Example: Write data to a CSV file
+    pymagick.write('output.csv', data)
+
+    # Example: Append data to a CSV file
+    pymagick.append('output.csv', new_data)
+
+    # Example: Convert data to JSON format
+    json_data = pymagick.convert(data, '.json')
+
+    # Example: Format JSON file
+    pymagick.format('output.json')
     ```
 
 ## Contribution 🤝
