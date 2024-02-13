@@ -1,5 +1,6 @@
 .git
 .idea
+.github
 setup.py
 pymagick.egg-info
 dist
