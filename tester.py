@@ -6,37 +6,46 @@ import os
 import pymagick
 
 
-def test_csv_handling():
-    print("Testing CSV file handling...")
-    # Sample data
-    data = [
-        ['Name', 'Age', 'City'],
-        ['John', 30, 'New York'],
-        ['Alice', 25, 'Los Angeles'],
-        ['Bob', 35, 'Chicago']
-    ]
-
-    # Convert data to CSV format
-    csv_data = pymagick.convert(data, '.csv')
-    print("CSV data:")
-    print(csv_data)
-
-    # Write CSV data to file
+def test_handling(file_format, data):
+    # Create the output folder if it doesn't exist
     output_folder = 'test-rubish'
     if not os.path.exists(output_folder):
         os.makedirs(output_folder)
 
-    output_file = os.path.join(output_folder, 'test.csv')
-    with open(output_file, 'w') as file:
-        file.write(csv_data)
-    print(f"CSV file '{output_file}' created.")
+    # Define the output file path
+    output_file = os.path.join(output_folder, f"test{file_format}")
+    """
+    Test file handling for the given format.
 
-    # Format CSV file
+    Args:
+        file_format (str): The format of the file to test (e.g., '.csv', '.json', '.xml').
+        data: The sample data to use for testing.
+    """
+    # Print a message indicating the start of the test
+    print(f"Testing {file_format.upper()} file handling...")
+
+    # Convert data to the specified format
+    file_data = pymagick.convert(data, file_format)
+
+    # Display the converted data
+    print(f"{file_format.upper()} data:")
+    print(file_data)
+
+    # Write the converted data to a file
+    pymagick.write(file_data, output_file)
+
+    # Print a message indicating the creation of the output file
+    print(f"{file_format.upper()} file '{output_file}' created.")
+
+    # Format the file
+    print(f"Formatting {file_format.upper()} file...")
     pymagick.opformat(output_file)
 
+    # Print a message indicating the completion of the test
+    print(f"{file_format.upper()} file formatted.\n")
 
-def test_json_handling():
-    print("\nTesting JSON file handling...")
+
+if __name__ == "__main__":
     # Sample data
     data = {
         "employees": [
@@ -46,25 +55,16 @@ def test_json_handling():
         ]
     }
 
-    # Convert data to JSON format
-    json_data = pymagick.convert(data, '.json')
-    print("JSON data:")
-    print(json_data)
+    # Test CSV handling
+    test_handling('.csv', [
+        ['Name', 'Age', 'City'],
+        ['John', 30, 'New York'],
+        ['Alice', 25, 'Los Angeles'],
+        ['Bob', 35, 'Chicago']
+    ])
 
-    # Write JSON data to file
-    output_folder = 'test-rubish'
-    if not os.path.exists(output_folder):
-        os.makedirs(output_folder)
+    # Test JSON handling
+    test_handling('.json', data)
 
-    output_file = os.path.join(output_folder, 'test.json')
-    with open(output_file, 'w') as file:
-        file.write(json_data)
-    print(f"JSON file '{output_file}' created.")
-
-    # Format JSON file
-    pymagick.opformat(output_file)
-
-
-if __name__ == "__main__":
-    test_csv_handling()
-    test_json_handling()
+    # Test XML handling
+    test_handling('.xml', data)
