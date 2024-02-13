@@ -1,6 +1,6 @@
 # PY-MAGICK 🪄✨
 
-**py-magik** is a Python module designed to facilitate file manipulation and usage in various formats. The module
+**pymagick** is a Python module designed to facilitate file manipulation and usage in various formats. The module
 provides functionalities for reading, writing, and manipulating files of different types, including CSV, JSON, XML, and
 more. This project aims to offer an intuitive and efficient interface for working with data stored in files, providing
 powerful tools for common data manipulation operations.
@@ -21,25 +21,25 @@ powerful tools for common data manipulation operations.
 You can install the module using pip:
 
 ```cmd
-> pip install py-magik
+> pip install pymagick
 ````
 
 ## Example Usage 💻
 
 ```python
-    import py_magik
+    import pymagick
 
 # Read data from a CSV file / export the data while read 
-data = py_magik.csv.read('data.csv') / ('data.csv', 'output.txt')
+data = pymagick.csv.read('data.csv') / ('data.csv', 'output.txt')
 
 # Convert the date (if possible)
-py_magik.convert(data, '.sql')
+pymagick.convert(data, '.sql')
 
 # Write data to a CSV file / 
-py_magik.csv.write('output.csv', data)
+pymagick.csv.write('output.csv', data)
 
 # Append in file
-py_magik.csv.append('output.csv', data, modifiers...)
+pymagick.csv.append('output.csv', data, modifiers...)
 
 object = {
     "data": [
@@ -66,17 +66,17 @@ object.appendto("enjoy", '"iforget": "Magick!"')
 
 - **CSV Quick Solve:**
     ```python
-    import py_magik
+    import pymagick
     """
     Quickest way to perform files without any format, just quick solves!
     """
-    data = py_magik.csv.read('data.csv')
-    py_magik.csv.write('output.csv', data)
+    data = pymagick.csv.read('data.csv')
+    pymagick.csv.write('output.csv', data)
     ```
 
 - **JSON Quick Solve:**
     ```python
-    import py_magik
+    import pymagick
     """
     Quickest way to perform files without any format, just quick solves!
     """
