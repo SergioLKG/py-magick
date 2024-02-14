@@ -52,28 +52,27 @@ def write(data, file_path):
         raise IOError(f"Error writing to file '{file_path}': {e}")
 
 
-def convert(data, to_format):
+def convert(data, output_format):
     """
-    Converts data to the specified format.
+    Convert data to the specified output format.
 
     Args:
         data (str): The data to be converted.
-        to_format (str): The format to convert the data to (e.g., '.csv', '.json', '.xml').
+        output_format (str): The desired output format (".json", ".csv", or ".xml").
 
     Returns:
-        str: The converted data in the specified format.
+        str: The data in the specified output format.
 
-    Raises:
-        ValueError: If the specified format is not supported.
+    Raise: ValueError: If data format is not supported for conversion.
     """
-    if to_format == '.csv':
-        return csv.convert(data)
-    elif to_format == '.json':
-        return json.convert(data)
-    elif to_format == '.xml':
+    if output_format == ".xml":
         return xml.convert(data)
+    elif output_format == ".json":
+        return json.convert(data)
+    elif output_format == ".csv":
+        return csv.convert(data)
     else:
-        raise ValueError(f"Unsupported format: {to_format}")
+        raise ValueError("Unsupported output format for conversion")
 
 
 def opformat(file_path):
